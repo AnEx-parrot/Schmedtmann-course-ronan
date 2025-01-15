@@ -20,20 +20,14 @@ document.querySelector('.check').addEventListener('click', function () {
             highscore = score;
         }
         document.querySelector('.highscore').textContent = highscore;
-    } else if (guess > secretNumber) { //guess too high
+    } else if (guess != secretNumber) {
         if (score > 0) {
-            document.querySelector('.message').textContent = 'Too High!';
+            document.querySelector('.message').textContent = guess > secretNumber ? 'Too High!' : 'Too Low!';
             score--;
             document.querySelector('.score').textContent = score;
         }
         else {
             document.querySelector('.message').textContent = 'You Lose :(';
-        }
-    } else if (guess < secretNumber) { //guess too low
-        if (score > 0) {
-            document.querySelector('.message').textContent = 'Too Low!';
-            score--;
-            document.querySelector('.score').textContent = score;
         }
     }
 });
