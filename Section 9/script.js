@@ -16,6 +16,9 @@ const restaurant = {
       return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
     }, */
 
+  //destructured object grabbed by function
+  orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) { console.log(`order received. ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`) },
+
   openingHours: {
     thu: {
       open: 12,
@@ -31,8 +34,38 @@ const restaurant = {
     },
   },
 };
+//destructuring objects
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const { name: restaurantName, openingHours: hours, categories: tags } = restaurant;
+console.log(restaurantName, hours, tags);
+//default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+//mutating variables
+
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b); //a = 23, b = 7
+
+//nested objects
+const { fri: { open, close } } = openingHours;
+console.log(open, close);
+
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+
 /* 
-//destructuring
+//destructuring arrays
 const arr = [2, 3, 4]
 const [x, y, z] = arr; //x=2, y=3, z=4
 console.log(x, y, z);
@@ -57,3 +90,4 @@ console.log(p, q, r); //r = undefined
 const [l = 1, m = 1, n = 1] = [8, 9];
 console.log(l, m, n); //r = 1
  */
+
