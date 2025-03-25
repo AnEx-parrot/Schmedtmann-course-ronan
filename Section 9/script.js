@@ -19,6 +19,9 @@ const restaurant = {
   //destructured object grabbed by function
   orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) { console.log(`order received. ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`) },
 
+  orderPasta: function (ing1, ing2, ing3) { console.log(ing1, ing2, ing3); },
+
+  orderPizza: function (mainIngredient, ...otherIngredient) { console.log(mainIngredient); console.log(otherIngredient); },
   openingHours: {
     thu: {
       open: 12,
@@ -34,6 +37,89 @@ const restaurant = {
     },
   },
 };
+
+/*
+//nullish coelescing operator ??
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+const guestCorrect = restaurant.numGuests ?? 10; //only stops on null or undefined. can use some falsy values like 0
+console.log(guestCorrect);
+*/
+
+/*
+//short circuting
+//OR
+console.log(3 || 'Ronan'); //result is 3. if the first value is truthy, the second element wont be evaluated
+
+console.log('' || 'Ronan');//ronan
+
+console.log(undefined || null);//null (note null is also falsy)
+//AND
+console.log(0 && 'Ronan'); //result is 0. if the first value is falsy, the second element wont be evaluated.
+*/
+/*
+//rest pattern
+//destructuring
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others); //the last 3 elements collected in others array
+
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(otherFood);
+
+
+//rest patterns with function
+const add = function (...numbers) { //allows for variable inputobject amounts
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum = sum + numbers[i];
+  }
+  console.log(sum);
+}
+add(2, 3);
+add(5, 3, 7, 2);
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza('mushroom', 'tomato', 'bacon');
+*/
+/*
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr]; //this uses the spread opperator
+console.log(newArr);
+
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+//copy array
+const MainMenuCopy = [...restaurant.mainMenu];
+
+//join 2 arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+//iterables: arrays, strings, maps, sets. NOT objects
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str);
+
+
+const ingredients = [prompt('let\'s make pasta! Ingredient 1?'), prompt('let\'s make pasta! Ingredient 2?'), prompt('let\'s make pasta! Ingredient 3?')]
+restaurant.orderPasta(...ingredients);
+
+//spread on objects
+const newRestauraut = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestauraut);
+*/
+
+/*
 //destructuring objects
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
@@ -62,7 +148,7 @@ restaurant.orderDelivery({
   mainIndex: 2,
   starterIndex: 2,
 });
-
+*/
 
 /* 
 //destructuring arrays

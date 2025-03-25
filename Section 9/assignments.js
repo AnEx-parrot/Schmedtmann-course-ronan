@@ -227,3 +227,38 @@ const printBookInfo = function ({ title, author, year = 'unknown' }) {
 };
 printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick', year: '2011' });
 printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
+
+//3.1
+const bookAuthors = [...books[0].author, ...books[1].author];
+console.log(bookAuthors);
+//3.2
+const spellWord = function (str) {
+    console.log(...str);
+};
+spellWord('JavaScript');
+
+//4.1
+const [mainKeyword, ...rest] = books[0].keywords;
+console.log(mainKeyword, rest);
+
+//4.2
+const { publisher: bookPublisher, ...restOfTheBook } = books[1];
+console.log(bookPublisher, restOfTheBook);
+
+const printBookAuthorsCount = function (title, ...authors) { console.log(`The Book ${title} has ${authors.length} authors`) };
+printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
+
+//5.1
+
+const hasExamplesInJava = function (book) { return book.programmingLanguage === 'Java' || 'no data available' };
+console.log(hasExamplesInJava(books[0]));
+console.log(hasExamplesInJava(books[1]));
+
+for (let i = 0; i < books.length; i++) {
+    books[i].onlineContent && console.log(`"${books[i].title}" provides online content.`);
+}
+
+//6.1
+for (let i = 0; i < books.length; i++) {
+    books[i].onlineContent ?? console.log(`"${books[i].title}" provides no info on online content.`);
+}
